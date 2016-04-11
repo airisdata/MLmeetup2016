@@ -1,0 +1,3 @@
+ipython-notebook
+nltk
+beautifulsoup4
