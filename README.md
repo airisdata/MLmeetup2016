@@ -1,4 +1,7 @@
+See:   https://github.com/ASvyatkovskiy/MLmeetup2016
+
 # Problem description
+
 
 The description of the problem can be found here: https://www.kaggle.com/c/dato-native
 
