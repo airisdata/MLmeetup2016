@@ -1,0 +1,11 @@
+{"namespace": "html.avro",
+ "type": "record",
+ "name": "Html",
+ "fields": [
+     {"name": "id", "type": "string"},
+     {"name": "images",  "type": {"type":"array", "items":"string"}},
+     {"name": "links", "type": {"type":"array", "items":"string"}},
+     {"name": "text", "type": "string"},
+     {"name": "title", "type": {"type":"array", "items":"string"}}
+ ]
+}

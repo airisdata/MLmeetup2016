@@ -131,14 +131,14 @@ def main(argv):
     sc = SparkContext(appName="KaggleDato")
 
     #parse labels as JSON
-    PATH_TO_TRAIN_LABELS = "/user/alexeys/KaggleDato/train_v2.csv"
+    PATH_TO_TRAIN_LABELS = "file:///scratch/network/alexeys/KaggleDato/train_v2.csv"
     train_label_rdd = sc.textFile(PATH_TO_TRAIN_LABELS).filter(lambda x: 'file' not in x).map(lambda x: parse_input(x)).map(lambda x: json.dumps(x)).repartition(1).saveAsTextFile('/user/alexeys/KaggleDato/train_csv_json')
 
-    nbuckets =  6
+    nbuckets =  1
     for bucket in range(nbuckets):
-        for section in range(1,10):
+        for section in range(1,2):
             print "Processing bucket ",bucket," section ", section
-            fIn_rdd = sc.wholeTextFiles("/user/alexeys/KaggleDato/"+str(bucket)+"/"+str(section)+"_raw_html.txt",10).map(parse_page_rdd).map(lambda x: json.dumps(x))
+            fIn_rdd = sc.wholeTextFiles("file:///scratch/network/alexeys/KaggleDato/"+str(bucket)+"/"+str(section)+"*_raw_html.txt",10).map(parse_page_rdd).map(lambda x: json.dumps(x))
             fIn_rdd.repartition(1).saveAsTextFile('/user/alexeys/KaggleDato/'+str(bucket)+'_'+str(section)+'/')
 
 if __name__ == "__main__":

@@ -1,0 +1,8 @@
+{"namespace": "html.avro",
+ "type": "record",
+ "name": "Html",
+ "fields": [
+     {"name": "id", "type": "string"},
+     {"name": "label", "type": "double"}
+ ]
+}
