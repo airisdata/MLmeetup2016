@@ -47,8 +47,17 @@ Install Apache Spark 1.6.1 or later on your laptop. Here are some instructions o
 
 1) Go to the Spark download page: http://spark.apache.org/downloads.html select a prebuilt distribution you need. Download and unpack it, then proceed to the step 2).
 
-Alternatively, install and build a custom Spark distribution from source:
+Alternatively, install and build a custom Spark distribution from source. Add the following dependency to link against the Databricks spark-avro library in the pom file:
 
+```bash
+<dependency>
+    <groupId>com.databricks</groupId>
+    <artifactId>spark-avro_2.10</artifactId>
+    <version>2.0.1</version>
+</dependency>
+```
+
+Then build using Maven:
 ```bash
 git clone git://github.com/apache/spark.git
 cd spark/
@@ -90,4 +99,9 @@ Once this is installed, create an isolated Anaconda nevironment for the meetup, 
 ```bash
 conda create --name meetup_env --file conda-requirements.txt
 source activate meetup_env
+```
+
+In addition, install the cssutils package using pip inside that environment as:
+```bash
+pip install --user cssutils
 ```
